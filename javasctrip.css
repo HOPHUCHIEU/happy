@@ -1,0 +1,301 @@
+html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffccd5, #ffe6f0, #f5ccff, #ffd1dc);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      max-width: 100vw;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23ffffff44"/></svg>');
+      background-size: 24px 24px;
+      pointer-events: none;
+      animation: sparkle 4s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes sparkle {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-24px); }
+    }
+
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .birthday-message {
+      text-align: center;
+      margin: 2rem 0;
+      animation: scaleIn 1.5s ease-in-out;
+    }
+
+    .message {
+      font-size: 1.5rem;
+      color: #d4418e;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: colorChange 3s infinite alternate;
+    }
+
+    @keyframes scaleIn {
+      from {transform: scale(0);}
+      to {transform: scale(1);}
+    }
+
+    @keyframes colorChange {
+      0% {color: #d4418e;}
+      50% {color: #ff66a3;}
+      100% {color: #b30059;}
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #b30059;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hearts span {
+      position: absolute;
+      color: #ff66a3;
+      font-size: 2rem;
+      animation: float 6s infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% {transform: translateY(0); opacity: 1;}
+      100% {transform: translateY(-100vh); opacity: 0;}
+    }
+
+    .video-section, .gallery, .music {
+      text-align: center;
+      padding: 2rem;
+      z-index: 1;
+    }
+
+    .gallery {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      perspective: 1000px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeInUp 1s ease-out;
+      transform-style: preserve-3d;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gallery img:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      filter: brightness(1.1) contrast(1.1);
+    }
+
+    .gallery img::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.4));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery img:hover::after {
+      opacity: 1;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px) rotateX(-10deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+      }
+    }
+
+    .birthday-message h2 {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, #ff6b6b, #ff9d9d, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: titleGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes titleGlow {
+      0%, 100% {
+        text-shadow: 0 0 10px rgba(255,107,107,0.5);
+      }
+      50% {
+        text-shadow: 0 0 20px rgba(255,107,107,0.8);
+      }
+    }
+
+    .floating-balloons {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .balloon {
+      position: absolute;
+      font-size: 2.5rem;
+      animation: floatBalloon 15s linear infinite;
+    }
+
+    @keyframes floatBalloon {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-20vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .cake-container {
+      position: relative;
+      text-align: center;
+      margin: 2rem 0;
+      font-size: 6rem;
+      animation: cakeAppear 1.5s ease-out;
+    }
+
+    @keyframes cakeAppear {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .cake {
+      position: relative;
+      display: inline-block;
+    }
+
+    .sparkles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .sparkle {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: sparkleFloat 2s ease-in infinite;
+    }
+
+    @keyframes sparkleFloat {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .heart-rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart-drop {
+      position: absolute;
+      font-size: 1.2rem;
+      animation: heartFall var(--fall-duration) linear infinite;
+      top: -20px;
+    }
+
+    @keyframes heartFall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    audio {
+      margin-top: 1rem;
+    }
