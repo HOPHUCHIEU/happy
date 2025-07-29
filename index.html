@@ -9,16 +9,64 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ffccd5, #ffe6f0, #f5ccff);
+      background: linear-gradient(135deg, #ffccd5, #ffe6f0, #f5ccff, #ffd1dc);
       background-size: 400% 400%;
-      animation: gradientMove 10s ease infinite;
+      animation: gradientMove 15s ease infinite;
       overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23ffffff44"/></svg>');
+      background-size: 24px 24px;
+      pointer-events: none;
+      animation: sparkle 4s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes sparkle {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-24px); }
     }
 
     @keyframes gradientMove {
       0% {background-position: 0% 50%;}
       50% {background-position: 100% 50%;}
       100% {background-position: 0% 50%;}
+    }
+
+    .birthday-message {
+      text-align: center;
+      margin: 2rem 0;
+      animation: scaleIn 1.5s ease-in-out;
+    }
+
+    .message {
+      font-size: 1.5rem;
+      color: #d4418e;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: colorChange 3s infinite alternate;
+    }
+
+    @keyframes scaleIn {
+      from {transform: scale(0);}
+      to {transform: scale(1);}
+    }
+
+    @keyframes colorChange {
+      0% {color: #d4418e;}
+      50% {color: #ff66a3;}
+      100% {color: #b30059;}
     }
 
     header {
@@ -62,11 +110,162 @@
       z-index: 1;
     }
 
+    .gallery {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      perspective: 1000px;
+    }
+
     .gallery img {
-      width: 150px;
-      margin: 10px;
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: all 0.5s ease;
+      animation: fadeInUp 1s ease-out;
+      transform-style: preserve-3d;
+    }
+
+    .gallery img:hover {
+      transform: rotateY(10deg) scale(1.05);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+      filter: brightness(1.1);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px) rotateX(-10deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+      }
+    }
+
+    .birthday-message h2 {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, #ff6b6b, #ff9d9d, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: titleGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes titleGlow {
+      0%, 100% {
+        text-shadow: 0 0 10px rgba(255,107,107,0.5);
+      }
+      50% {
+        text-shadow: 0 0 20px rgba(255,107,107,0.8);
+      }
+    }
+
+    .floating-balloons {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .balloon {
+      position: absolute;
+      font-size: 2.5rem;
+      animation: floatBalloon 15s linear infinite;
+    }
+
+    @keyframes floatBalloon {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-20vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .cake-container {
+      position: relative;
+      text-align: center;
+      margin: 2rem 0;
+      font-size: 6rem;
+      animation: cakeAppear 1.5s ease-out;
+    }
+
+    @keyframes cakeAppear {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .cake {
+      position: relative;
+      display: inline-block;
+    }
+
+    .sparkles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .sparkle {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: sparkleFloat 2s ease-in infinite;
+    }
+
+    @keyframes sparkleFloat {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .heart-rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart-drop {
+      position: absolute;
+      font-size: 1.2rem;
+      animation: heartFall var(--fall-duration) linear infinite;
+      top: -20px;
+    }
+
+    @keyframes heartFall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
     }
 
     audio {
@@ -82,10 +281,44 @@
     <span style="left: 70%; animation-delay: 3s;">💓</span>
     <span style="left: 90%; animation-delay: 1.5s;">❤️</span>
   </div>
+  
+  <div class="floating-balloons">
+    <span class="balloon" style="left: 5%; animation-delay: 0s;">🎈</span>
+    <span class="balloon" style="left: 25%; animation-delay: 3s;">🎈</span>
+    <span class="balloon" style="left: 45%; animation-delay: 6s;">🎈</span>
+    <span class="balloon" style="left: 65%; animation-delay: 9s;">🎈</span>
+    <span class="balloon" style="left: 85%; animation-delay: 12s;">🎈</span>
+  </div>
 
   <header>
     Happy Birthday Võ Thị Vỹ Vỹ! 💕
   </header>
+
+  <div class="cake-container">
+    <div class="cake">
+      🎂
+      <div class="sparkles">
+        <span class="sparkle" style="--tx: -20px; --ty: -20px;">✨</span>
+        <span class="sparkle" style="--tx: 20px; --ty: -20px;">💫</span>
+        <span class="sparkle" style="--tx: 0px; --ty: -30px;">⭐</span>
+        <span class="sparkle" style="--tx: -15px; --ty: -25px;">✨</span>
+        <span class="sparkle" style="--tx: 15px; --ty: -25px;">💫</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="heart-rain">
+    <span class="heart-drop" style="left: 5%; --fall-duration: 3s;">💝</span>
+    <span class="heart-drop" style="left: 15%; --fall-duration: 4s;">💖</span>
+    <span class="heart-drop" style="left: 25%; --fall-duration: 3.5s;">💗</span>
+    <span class="heart-drop" style="left: 35%; --fall-duration: 4.5s;">💓</span>
+    <span class="heart-drop" style="left: 45%; --fall-duration: 3s;">💘</span>
+    <span class="heart-drop" style="left: 55%; --fall-duration: 4s;">💝</span>
+    <span class="heart-drop" style="left: 65%; --fall-duration: 3.5s;">💖</span>
+    <span class="heart-drop" style="left: 75%; --fall-duration: 4.5s;">💗</span>
+    <span class="heart-drop" style="left: 85%; --fall-duration: 3s;">💓</span>
+    <span class="heart-drop" style="left: 95%; --fall-duration: 4s;">💘</span>
+  </div>
 
   <div class="video-section">
     <h2>🎥 A Special Message for You</h2>
@@ -103,9 +336,13 @@
     <!-- Add more images by adding their Google Drive file IDs above -->
   </div>
 
-  <div class="music">
-    <h2>🎵 Happy Birthday Song</h2>
-    <iframe width="320" height="180" src="https://www.youtube.com/embed/vhVBWw6rId0?autoplay=1&loop=1&playlist=vhVBWw6rId0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <div class="music" style="display: none;">
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/vhVBWw6rId0?autoplay=1&loop=1&playlist=vhVBWw6rId0" allow="autoplay"></iframe>
+  </div>
+
+  <div class="birthday-message">
+    <h2>🎂 Chúc mừng sinh nhật!</h2>
+    <p class="message">Chúc bạn một ngày sinh nhật thật nhiều niềm vui và hạnh phúc!</p>
   </div>
 </body>
 </html>
