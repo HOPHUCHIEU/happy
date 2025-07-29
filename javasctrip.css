@@ -105,7 +105,7 @@ html, body {
 
     .video-section, .gallery, .music {
       text-align: center;
-      padding: 2rem;
+      /* padding: 2rem; */
       z-index: 1;
     }
 
