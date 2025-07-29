@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Võ Thị Vỹ Vỹ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffccd5, #ffe6f0, #f5ccff);
+      background-size: 400% 400%;
+      animation: gradientMove 10s ease infinite;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #b30059;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hearts span {
+      position: absolute;
+      color: #ff66a3;
+      font-size: 2rem;
+      animation: float 6s infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% {transform: translateY(0); opacity: 1;}
+      100% {transform: translateY(-100vh); opacity: 0;}
+    }
+
+    .video-section, .gallery, .music {
+      text-align: center;
+      padding: 2rem;
+      z-index: 1;
+    }
+
+    .gallery img {
+      width: 150px;
+      margin: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    audio {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts">
+    <span style="left: 10%; animation-delay: 0s;">❤</span>
+    <span style="left: 30%; animation-delay: 2s;">💖</span>
+    <span style="left: 50%; animation-delay: 1s;">💕</span>
+    <span style="left: 70%; animation-delay: 3s;">💓</span>
+    <span style="left: 90%; animation-delay: 1.5s;">❤️</span>
+  </div>
+
+  <header>
+    Happy Birthday Võ Thị Vỹ Vỹ! 💕
+  </header>
+
+  <div class="video-section">
+    <h2>🎥 A Special Message for You</h2>
+    <video controls width="320">
+      <source src="birthday_greeting_video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div class="gallery">
+    <h2>📸 Our Sweet Memories</h2>
+    <img src="https://drive.google.com/uc?export=view&id=1iLzGdUuOnhfhHIVRVwz0eBdfdYG7kp1q" />
+    <img src="https://drive.google.com/uc?export=view&id=1vBtTIRaaJ64JlyJeupkwGqibLTK4LxyH" />
+    <img src="https://drive.google.com/uc?export=view&id=1BJcqI-d_qg4toTz_UhddhVm7V_n3C0Fz" />
+    <!-- Add more images by adding their Google Drive file IDs above -->
+  </div>
+
+  <div class="music">
+    <h2>🎵 Happy Birthday Song</h2>
+    <iframe width="320" height="180" src="https://www.youtube.com/embed/vhVBWw6rId0?autoplay=1&loop=1&playlist=vhVBWw6rId0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</body>
+</html>
